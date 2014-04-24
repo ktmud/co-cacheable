@@ -1,0 +1,29 @@
+{
+  "name": "co-cacheable",
+  "version": "0.0.1",
+  "description": "co wrapper for cacheable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ktmud/co-cacheable"
+  },
+  "dependencies": {
+    "co": ">= 2.0.0",
+    "cacheable": "0.2.x"
+  },
+  "keywords": [
+    "co",
+    "cache",
+    "cacheable",
+    "harmony"
+  ],
+  "author": "ktmud <kissmud@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ktmud/co-cacheable/issues"
+  },
+  "homepage": "https://github.com/ktmud/co-cacheable"
+}
