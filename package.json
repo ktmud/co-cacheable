@@ -1,6 +1,6 @@
 {
   "name": "co-cacheable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "co wrapper for cacheable",
   "main": "index.js",
   "scripts": {
