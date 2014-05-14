@@ -13,7 +13,7 @@ util.inherits(CoCacheable, Cacheable)
 
 CoCacheable.prototype.wrap = function(fn) {
   var args = __slice.call(arguments)
-  var isGen = isGeneratorFunction(fn)
+  var isGen = isGeneratorOrThunk(fn)
   var wrapped
 
   if (isGen) {
@@ -39,8 +39,8 @@ CoCacheable.prototype.wrap = function(fn) {
 
   if (isGen) {
     var _wrapped = wrapped
-    // convert the wrapped async function to thunk,
-    // so we can `yield` it
+    // convert the wrapped async function to a thunk,
+    // so the return function may have the same signature as the `fn`
     wrapped = function() {
       var params = __slice.call(arguments)
       var self = this
@@ -54,8 +54,9 @@ CoCacheable.prototype.wrap = function(fn) {
 }
 
 
-function isGeneratorFunction(obj) {
-  return obj && obj.constructor && 'GeneratorFunction' == obj.constructor.name;
+function isGeneratorOrThunk(obj) {
+  return obj && obj.constructor && 'GeneratorFunction' == obj.constructor.name ||
+         obj && obj.isThunk === true;
 }
 
 

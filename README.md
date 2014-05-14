@@ -14,9 +14,18 @@ var cached = require('co-cacheable')({
 function User() {
 }
 
-User.prototype.getDetails = function* () {
+User.prototype.getDetails = function* getDetails() {
   // fetch from a remote API
 }
 
+User.prototype.thunkedMethod = function() {
+  return function(callback) {
+  }
+}
+// manually mark this function as thunked method
+User.prototype.thunkedMethod.isThunk = true
 
+cached.register(User)
+User.enableCache('.getDetails')
+User.enableCache('.thunkedMethod')
 ```
