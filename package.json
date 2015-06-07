@@ -11,7 +11,7 @@
     "url": "git://github.com/ktmud/co-cacheable"
   },
   "dependencies": {
-    "co": ">= 2.0.0",
+    "co": "~4.5.4",
     "cacheable": "~0.2.9"
   },
   "keywords": [

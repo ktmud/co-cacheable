@@ -21,15 +21,10 @@ CoCacheable.prototype.wrap = function(fn) {
     args[0] = function() {
       var params = __slice.call(arguments)
       var next = params.pop()
-      co(function* () {
-        var result, err
-        try {
-          result = yield fn.apply(this, params)
-        } catch (e) {
-          err = e
-        }
-        next(err, result)
-      }).call(this)
+      co.wrap(fn).apply(this, params)
+        .then(function(result) {
+          next(null, result)
+        }).catch(next)
     }
     // method must provide a name
     args[0][_REALNAME] = fn[_REALNAME]
